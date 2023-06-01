@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../../Services/user.services';
+import { Component } from '@angular/core';
+import { UsersService } from '../../Services/user.services';
+import { AddUserComponent } from '../../Add-user/add-user.component'
+
 
 
 @Component({
@@ -7,29 +9,25 @@ import { UsersService } from '../../../Services/user.services';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
 
 
   users: any;
- 
-  
+
 
   isAddModalOpen = false;
-  isUpdateModalOpen = false;
-  isDeleteModalOpen = false;
 
 
-  constructor(private myService: UsersService) { }
-
-  ngOnInit(): void {
+  constructor(private myService: UsersService) {
     this.myService.getAllUsers().subscribe({
       next: (data) => { this.users = data; },
       error: (err) => { console.log(err.message); },
     });
   }
 
-  openAddModal(): void {
+
+  toggleAddModal(): void {
     this.isAddModalOpen = !this.isAddModalOpen;
   }
 }

@@ -1,25 +1,47 @@
 <div style="position: absolute; top: 40%; left: 25%" class="bg-light mx-auto m-3 col-6 border border-3 rounded p-5">
-    <input type="button" value="X" class="text-danger fw-bold btn btn-light border border-0 position-absolute top-0 end-0">
-    
+    <button (click)="close()" class="text-danger fw-bold btn btn-light border border-0 position-absolute top-0 end-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-square-fill"
+            viewBox="0 0 16 16">
+            <path
+                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z" />
+        </svg>
+    </button>
+
     <form>
 
         <div class="my-2">
             <label class="col-2">Name</label>
-            <input class="col-4 rounded" type="text" #name>
+            <input class="col-4 rounded" type="text" placeholder="Enter Your Name" #name required>
         </div>
-    
+
         <div class="my-2">
-            <label class="col-2">Age</label>
-            <input class="col-4 rounded" type="text" #age>
+            <label class="col-2">Email</label>
+            <input class="col-4 rounded" type="email" pattern="[a-z\d]+@[a-z0-9]+\.[a-z]{2,}"
+                placeholder="exmp@exmp.com" #email required>
         </div>
-    
+
+        <div class="my-2">
+            <label class="col-2">Phone</label>
+            <input class="col-4 rounded" type="text" #phone required minlength="11">
+        </div>
+
+        <div class="my-2">
+            <label class="col-2">Suite</label>
+            <input class="col-4 rounded" type="text" #suite required>
+        </div>
+
+        <div class="my-2">
+            <label class="col-2">Street</label>
+            <input class="col-4 rounded" type="text" #street required>
+        </div>
+
         <div class="my-2">
             <label class="col-2">City</label>
-            <input class="col-4 rounded" type="text" #city>
+            <input class="col-4 rounded" type="text" #city required>
         </div>
-    
-        <!-- <input class="btn btn-success" type="button" value="Submit"
-            (click)="addStd($event, name.value, age.value, city.value)" routerLink="/"> -->
-    
+
+        <input class="btn btn-success" type="submit"
+            (click)="addUser($event, name.value, email.value, phone.value, suite.value, street.value, city.value)">
+
     </form>
 </div>

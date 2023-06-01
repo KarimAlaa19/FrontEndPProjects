@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AlbumService } from '../../Services/album.services';
-import { UsersService } from '../../Services/user.services';
+import { AlbumService } from '../Services/album.services';
+import { UsersService } from '../Services/user.services';
 import { ActivatedRoute } from '@angular/router';
 
 

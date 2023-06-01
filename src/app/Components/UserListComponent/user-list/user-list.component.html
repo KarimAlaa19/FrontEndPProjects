@@ -1,7 +1,7 @@
 <div class="bg-primary row">
     <h3 class="col-lg-9 col-6 text-light p-3 mx-5">Users</h3>
 
-    <input type="button" value="+ Add User" class="fw-bold col-lg-1 col-3  h-50 mt-3 btn btn-light" (click)="openAddModal()">
+    <input type="button" value="+ Add User" class="fw-bold col-lg-1 col-3  h-50 mt-3 btn btn-light" (click)="toggleAddModal()">
 </div>
 
 
@@ -26,8 +26,6 @@
                 <td>{{user.address.suite + ' ' + user.address.street + ', ' + user.address.city}}</td>
                 <td class="text-center">
                     <input class="mx-3 btn btn-success" type="button"  value="View" routerLink="/user/{{user.id}}" >
-                    <input class="mx-3 btn btn-primary" type="button" value="Update">
-                    <input class="mx-3 btn btn-danger" type="button" value="Delete">
                 </td>
             </tr>
         </tbody>
@@ -36,4 +34,4 @@
 </div>
 
 
-<app-add-user *ngIf="isAddModalOpen"></app-add-user>
+<app-add-user *ngIf="isAddModalOpen" [usersArr]="users" (closeModal)="toggleAddModal()"></app-add-user>

@@ -11,6 +11,7 @@ import { AlbumComponent } from './Components/Album/album.component';
 import { AlbumListComponent } from './Components/Album-list/album-list.component';
 import {AddUserComponent } from './Components/Add-user/add-user.component';
 import { ErrorComponent } from './Components/error/error.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 let routes: Routes = [
@@ -18,8 +19,6 @@ let routes: Routes = [
   {path: 'user', component: UserListComponent},
   {path: 'user/:userId', component: AlbumListComponent},
   {path: 'user/:userId/album/:albumId', component: AlbumComponent},
-  // {path: 'add-user', component: AddStudentComponent},
-  // {path: 'update-std/:id', component: UpdateStudentComponent},
   {path: '**', component: ErrorComponent}
 ];
 
@@ -31,13 +30,14 @@ let routes: Routes = [
     AlbumComponent,
     AlbumListComponent,
     AddUserComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent]
 })
