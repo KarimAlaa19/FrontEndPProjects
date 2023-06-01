@@ -1,222 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../../Services/user.services';
 
-import { AddUserComponent } from '../../Add-user/add-user.component'
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
+
+
+
+  users: any;
+ 
   
+
   isAddModalOpen = false;
   isUpdateModalOpen = false;
   isDeleteModalOpen = false;
-  
-  users = [
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    },
-    {
-      name: 'karim alaa',
-      email: 'karimalaa195@gmail.com',
-      phone: '01274987945',
-      address: {
-        suit: 124,
-        street: 'ammar bn yasser',
-        city: 'ismailia'
-      }
-    }
-  ];
 
 
+  constructor(private myService: UsersService) { }
+
+  ngOnInit(): void {
+    this.myService.getAllUsers().subscribe({
+      next: (data) => { this.users = data; },
+      error: (err) => { console.log(err.message); },
+    });
+  }
 
   openAddModal(): void {
     this.isAddModalOpen = !this.isAddModalOpen;

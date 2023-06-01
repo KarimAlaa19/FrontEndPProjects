@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/Shared/NavBarComponent/navbar/navbar.component';
@@ -7,8 +10,18 @@ import { UserListComponent } from './Components/UserListComponent/user-list/user
 import { AlbumComponent } from './Components/Album/album.component';
 import { AlbumListComponent } from './Components/Album-list/album-list.component';
 import {AddUserComponent } from './Components/Add-user/add-user.component';
-import { UserInfoComponent } from './Components/User-info/user-info.component';
+import { ErrorComponent } from './Components/error/error.component';
 
+
+let routes: Routes = [
+  { path: '', component: UserListComponent },
+  {path: 'user', component: UserListComponent},
+  {path: 'user/:userId', component: AlbumListComponent},
+  {path: 'user/:userId/album/:albumId', component: AlbumComponent},
+  // {path: 'add-user', component: AddStudentComponent},
+  // {path: 'update-std/:id', component: UpdateStudentComponent},
+  {path: '**', component: ErrorComponent}
+];
 
 @NgModule({
   declarations: [
@@ -18,10 +31,13 @@ import { UserInfoComponent } from './Components/User-info/user-info.component';
     AlbumComponent,
     AlbumListComponent,
     AddUserComponent,
-    UserInfoComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
